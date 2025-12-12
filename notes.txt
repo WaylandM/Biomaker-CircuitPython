@@ -1,0 +1,51 @@
+Lesson 1: Introduction
+pin connections p11
+CircuitPython datatypes p15 - not XOD equivalents
+
+
+Lesson 2: Getting Started
+setting up your board p19
+testing your board p20
+input and output devices p26
+
+Lesson 3: Explore CircuitPython
+tweak and watch nodes p33
+flip, clock and count nodes p36
+concat, join and format-number nodes p42
+
+Lesson 4: Building Devices
+Creating new nodes p50 - creating functions?
+Using buses p56 - no equivalent
+Program logic - p60
+Sequences and loops - p 64
+Embedded hardware - p72 - separate into board and expansion board?
+    1. LED
+    2. Buzzer
+    3. OLED screen
+    4. Button
+    5. Potentiometer
+    6. Light sensor
+    7. Sound sensor
+    8. DHT11 Hygrometer  - check what is on board
+    9. Air pressure sensor
+    10. Accelerometer
+
+
+Lesson 5: Next Steps
+Hardware expansion p86
+
+Hardware:
+    16x2 character LCD screen p98
+    12xWS2812 RGB LED Ring p102
+    Real-time clock DS1302 - better to use onboard p106
+    Temperature and humidity sensor (SHT20) p110
+    Calibrated Light sensor (BH1750) p114
+    Colour sensor TCS3472 p118
+    VL6180X Laser Range Finder p122
+    MCP9808 temperature sensor p126
+    Motion sensor (HC-SR501) 
+    Radar Proximity Sensor (RCWL-0516)
+    Weight sensor (HX711)
+    Water quality sensor (TDS Meter V1.0)
+    Water level sensor 
+    Capacitive soil moisture sensor
