@@ -43,9 +43,10 @@ Hardware:
     Colour sensor TCS3472 p118
     VL6180X Laser Range Finder p122
     MCP9808 temperature sensor p126
-    Motion sensor (HC-SR501) 
-    Radar Proximity Sensor (RCWL-0516)
-    Weight sensor (HX711)
-    Water quality sensor (TDS Meter V1.0)
-    Water level sensor 
-    Capacitive soil moisture sensor
+    Motion sensor (HC-SR501) p130
+    Radar Proximity Sensor (RCWL-0516) p134
+    Weight sensor (HX711) p138
+    Water quality sensor (TDS Meter V1.0) p142
+    Water level sensor p146
+    Capacitive soil moisture sensor p150
+    
