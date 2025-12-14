@@ -1,0 +1,26 @@
+project:
+  type: book
+
+book:
+  title: "CircuitPython for Biomakers"
+  author: "Matt Wayland"
+  date: "12/12/2025"
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - summary.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+  pdf:
+    documentclass: scrreprt
+
+
+
+
