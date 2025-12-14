@@ -3,7 +3,7 @@ project:
 
 book:
   title: "CircuitPython for Biomakers"
-  author: "Matt Wayland"
+  author: "Biomaker Team, University of Cambridge"
   date: "12/12/2025"
   chapters:
     - index.qmd
