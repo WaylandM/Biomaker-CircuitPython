@@ -7,8 +7,18 @@ book:
   date: "12/12/2025"
   chapters:
     - index.qmd
-    - intro.qmd
-    - summary.qmd
+    - part: intro.qmd
+      chapters:
+        - starter_kit.qmd
+        - circuitpython_datatypes.qmd
+    - part: lesson2.qmd
+      chapters: 
+        - setting_up_board.qmd
+        - testing_board.qmd
+        - io_devices.qmd
+    - part: lesson3.qmd
+    - part: lesson4.qmd
+    - part: lesson5.qmd
     - references.qmd
 
 bibliography: references.bib
