@@ -1,3 +1,5 @@
 # The starter kit  {.unnumbered}
 
 content coming soon ...
+
+![Starter Kit](images/sensor-kit-base.jpg)

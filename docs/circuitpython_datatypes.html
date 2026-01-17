@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>CircuitPython datatypes – CircuitPython for Biomakers</title>
+<title>CircuitPython data types – CircuitPython for Biomakers</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -42,7 +42,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-569a261e569f1600697a40f2b65c7c57.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-e466a46ec7b9cbce6cc3184e3934b5c2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -83,7 +83,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Introduction</a></li><li class="breadcrumb-item"><a href="./circuitpython_datatypes.html">CircuitPython datatypes</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Introduction</a></li><li class="breadcrumb-item"><a href="./circuitpython_datatypes.html">CircuitPython data types</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -132,7 +132,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./circuitpython_datatypes.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">CircuitPython datatypes</span></a>
+ <span class="menu-text">CircuitPython data types</span></a>
   </div>
 </li>
       </ul>
@@ -189,15 +189,49 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#core-built-in-data-types" id="toc-core-built-in-data-types" class="nav-link active" data-scroll-target="#core-built-in-data-types">Core built-in data types</a>
+  <ul class="collapse">
+  <li><a href="#nonetype" id="toc-nonetype" class="nav-link" data-scroll-target="#nonetype">NoneType</a></li>
+  <li><a href="#boolean-bool" id="toc-boolean-bool" class="nav-link" data-scroll-target="#boolean-bool">Boolean (bool)</a></li>
+  <li><a href="#integers-int" id="toc-integers-int" class="nav-link" data-scroll-target="#integers-int">Integers (int)</a></li>
+  <li><a href="#floating-point-float" id="toc-floating-point-float" class="nav-link" data-scroll-target="#floating-point-float">Floating Point (float)</a></li>
+  </ul></li>
+  <li><a href="#text-binary-data" id="toc-text-binary-data" class="nav-link" data-scroll-target="#text-binary-data">Text &amp; Binary Data</a>
+  <ul class="collapse">
+  <li><a href="#strings-str" id="toc-strings-str" class="nav-link" data-scroll-target="#strings-str">Strings (str)</a></li>
+  <li><a href="#bytes-bytes" id="toc-bytes-bytes" class="nav-link" data-scroll-target="#bytes-bytes">Bytes (bytes)</a></li>
+  <li><a href="#bytearray-bytearray" id="toc-bytearray-bytearray" class="nav-link" data-scroll-target="#bytearray-bytearray">Bytearray (bytearray)</a></li>
+  </ul></li>
+  <li><a href="#collections" id="toc-collections" class="nav-link" data-scroll-target="#collections">Collections</a>
+  <ul class="collapse">
+  <li><a href="#tuple-tuple" id="toc-tuple-tuple" class="nav-link" data-scroll-target="#tuple-tuple">Tuple (tuple)</a></li>
+  <li><a href="#list-list" id="toc-list-list" class="nav-link" data-scroll-target="#list-list">List (list)</a></li>
+  <li><a href="#dictionary-dict" id="toc-dictionary-dict" class="nav-link" data-scroll-target="#dictionary-dict">Dictionary (dict)</a></li>
+  <li><a href="#set-set" id="toc-set-set" class="nav-link" data-scroll-target="#set-set">Set (set)</a></li>
+  </ul></li>
+  <li><a href="#special-advanced-types" id="toc-special-advanced-types" class="nav-link" data-scroll-target="#special-advanced-types">Special &amp; Advanced Types</a>
+  <ul class="collapse">
+  <li><a href="#range-range" id="toc-range-range" class="nav-link" data-scroll-target="#range-range">Range (range)</a></li>
+  <li><a href="#memoryview-memoryview" id="toc-memoryview-memoryview" class="nav-link" data-scroll-target="#memoryview-memoryview">Memoryview (memoryview)</a></li>
+  <li><a href="#function-function" id="toc-function-function" class="nav-link" data-scroll-target="#function-function">Function (function)</a></li>
+  <li><a href="#class-object-object" id="toc-class-object-object" class="nav-link" data-scroll-target="#class-object-object">Class / Object (object)</a></li>
+  </ul></li>
+  <li><a href="#not-available-or-limited" id="toc-not-available-or-limited" class="nav-link" data-scroll-target="#not-available-or-limited">Not Available or Limited</a></li>
+  <li><a href="#performance-memory-guidance-very-important" id="toc-performance-memory-guidance-very-important" class="nav-link" data-scroll-target="#performance-memory-guidance-very-important">Performance &amp; Memory Guidance (Very Important)</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Introduction</a></li><li class="breadcrumb-item"><a href="./circuitpython_datatypes.html">CircuitPython datatypes</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Introduction</a></li><li class="breadcrumb-item"><a href="./circuitpython_datatypes.html">CircuitPython data types</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">CircuitPython datatypes</h1>
+<h1 class="title">CircuitPython data types</h1>
 </div>
 
 
@@ -214,9 +248,210 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>content coming soon….</p>
+<p>In <strong>CircuitPython</strong>, data types are mostly the same as <strong>Python</strong>, but with <strong>important constraints</strong> due to limited memory and performance on microcontrollers.</p>
+<p>Below is a <strong>complete, practical overview</strong> of <strong>CircuitPython data types</strong>, with notes on when and why to use each.</p>
+<section id="core-built-in-data-types" class="level2">
+<h2 class="anchored" data-anchor-id="core-built-in-data-types">Core built-in data types</h2>
+<section id="nonetype" class="level3">
+<h3 class="anchored" data-anchor-id="nonetype">NoneType</h3>
+<pre><code>x = None
+</code></pre>
+<ul>
+<li>Represents “no value”</li>
+<li>Common for defaults or placeholders</li>
+</ul>
+</section>
+<section id="boolean-bool" class="level3">
+<h3 class="anchored" data-anchor-id="boolean-bool">Boolean (bool)</h3>
+<pre><code>True, False</code></pre>
+<ul>
+<li>Used for logic and conditions</li>
+<li>Very small memory footprint</li>
+</ul>
+</section>
+<section id="integers-int" class="level3">
+<h3 class="anchored" data-anchor-id="integers-int">Integers (int)</h3>
+<pre><code>x = 42</code></pre>
+<ul>
+<li>Arbitrary precision in theory</li>
+<li>In practice: limited by available RAM</li>
+<li>Much cheaper than floats</li>
+</ul>
+<p>📌 Use ints whenever possible</p>
+</section>
+<section id="floating-point-float" class="level3">
+<h3 class="anchored" data-anchor-id="floating-point-float">Floating Point (float)</h3>
+<pre><code>x = 3.14</code></pre>
+<ul>
+<li>32-bit floats (single precision)</li>
+<li>Slower and more memory-hungry</li>
+<li>Avoid in tight loops if possible</li>
+</ul>
+</section>
+</section>
+<section id="text-binary-data" class="level2">
+<h2 class="anchored" data-anchor-id="text-binary-data">Text &amp; Binary Data</h2>
+<section id="strings-str" class="level3">
+<h3 class="anchored" data-anchor-id="strings-str">Strings (str)</h3>
+<pre><code>s = "hello"</code></pre>
+<ul>
+<li>UTF-8 strings</li>
+<li>Immutable (cannot be changed in place)</li>
+<li>Repeated concatenation causes fragmentation</li>
+</ul>
+<p>📌 Prefer building strings carefully or using buffers</p>
+</section>
+<section id="bytes-bytes" class="level3">
+<h3 class="anchored" data-anchor-id="bytes-bytes">Bytes (bytes)</h3>
+<pre><code>b = b"ABC"</code></pre>
+<ul>
+<li>Immutable sequence of bytes</li>
+<li>Efficient for binary data</li>
+<li>Common in I/O and communication</li>
+</ul>
+</section>
+<section id="bytearray-bytearray" class="level3">
+<h3 class="anchored" data-anchor-id="bytearray-bytearray">Bytearray (bytearray)</h3>
+<pre><code>buf = bytearray(10)</code></pre>
+<ul>
+<li>Mutable sequence of bytes</li>
+<li>Very memory-efficient</li>
+<li>Excellent for buffers, sensors, displays</li>
+</ul>
+<p>⭐ Highly recommended for performance</p>
+</section>
+</section>
+<section id="collections" class="level2">
+<h2 class="anchored" data-anchor-id="collections">Collections</h2>
+<section id="tuple-tuple" class="level3">
+<h3 class="anchored" data-anchor-id="tuple-tuple">Tuple (tuple)</h3>
+<pre><code>t = (1, 2, 3)</code></pre>
+<ul>
+<li>Immutable</li>
+<li>Lower overhead than lists</li>
+<li>Good for constants</li>
+</ul>
+</section>
+<section id="list-list" class="level3">
+<h3 class="anchored" data-anchor-id="list-list">List (list)</h3>
+<pre><code>lst = [1, 2, 3]</code></pre>
+<ul>
+<li>Mutable</li>
+<li>Higher memory overhead</li>
+<li>Avoid large or frequently resized lists</li>
+</ul>
+</section>
+<section id="dictionary-dict" class="level3">
+<h3 class="anchored" data-anchor-id="dictionary-dict">Dictionary (dict)</h3>
+<pre><code>d = {"a": 1, "b": 2}</code></pre>
+<ul>
+<li>High memory cost</li>
+<li>Slower than lists/tuples</li>
+<li>Use sparingly on microcontrollers</li>
+</ul>
+</section>
+<section id="set-set" class="level3">
+<h3 class="anchored" data-anchor-id="set-set">Set (set)</h3>
+<pre><code>s = {1, 2, 3}</code></pre>
+<ul>
+<li>Supported, but expensive in memory</li>
+<li>Rarely used in CircuitPython projects</li>
+</ul>
+</section>
+</section>
+<section id="special-advanced-types" class="level2">
+<h2 class="anchored" data-anchor-id="special-advanced-types">Special &amp; Advanced Types</h2>
+<section id="range-range" class="level3">
+<h3 class="anchored" data-anchor-id="range-range">Range (range)</h3>
+<pre><code>for i in range(10):</code></pre>
+<ul>
+<li>Memory-efficient</li>
+<li>Does not create a list</li>
+<li>Always prefer over list(range())</li>
+</ul>
+</section>
+<section id="memoryview-memoryview" class="level3">
+<h3 class="anchored" data-anchor-id="memoryview-memoryview">Memoryview (memoryview)</h3>
+<pre><code>mv = memoryview(buf)</code></pre>
+<ul>
+<li>Zero-copy view of buffers</li>
+<li>Extremely efficient</li>
+<li>Ideal for slicing bytearrays</li>
+</ul>
+<p>⭐ Advanced but very powerful</p>
+</section>
+<section id="function-function" class="level3">
+<h3 class="anchored" data-anchor-id="function-function">Function (function)</h3>
+<pre><code>def foo():
+    pass</code></pre>
+<ul>
+<li>First-class objects</li>
+<li>Minimal overhead</li>
+</ul>
+</section>
+<section id="class-object-object" class="level3">
+<h3 class="anchored" data-anchor-id="class-object-object">Class / Object (object)</h3>
+<pre><code>class Foo:
+    pass</code></pre>
+<ul>
+<li>Supported</li>
+<li>Each instance uses memory</li>
+<li>Avoid heavy OOP patterns</li>
+</ul>
+</section>
+</section>
+<section id="not-available-or-limited" class="level2">
+<h2 class="anchored" data-anchor-id="not-available-or-limited">Not Available or Limited</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>complex</code></td>
+<td>❌ Not supported</td>
+</tr>
+<tr class="even">
+<td><code>decimal</code></td>
+<td>❌ Not supported</td>
+</tr>
+<tr class="odd">
+<td><code>fractions</code></td>
+<td>❌ Not supported</td>
+</tr>
+<tr class="even">
+<td><code>numpy</code></td>
+<td>❌ Not available</td>
+</tr>
+<tr class="odd">
+<td>Large recursion</td>
+<td>⚠️ Limited stack</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="performance-memory-guidance-very-important" class="level2">
+<h2 class="anchored" data-anchor-id="performance-memory-guidance-very-important">Performance &amp; Memory Guidance (Very Important)</h2>
+<p>Best choices for microcontrollers</p>
+<p>✔ int</p>
+<p>✔ bool</p>
+<p>✔ tuple</p>
+<p>✔ range</p>
+<p>✔ bytearray</p>
+<p>✔ memoryview</p>
+<p>Use sparingly</p>
+<p>⚠️ float</p>
+<p>⚠️ list</p>
+<p>⚠️ dict</p>
+<p>⚠️ set</p>
+<p>⚠️ str concatenation</p>
+<p>In summary, CircuitPython supports most core Python data types, but memory-efficient types like int, bytearray, and range are strongly preferred.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

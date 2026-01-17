@@ -24,7 +24,7 @@
     "href": "starter_kit.html",
     "title": "The starter kit",
     "section": "",
-    "text": "content coming soon …",
+    "text": "content coming soon …\n\n\n\nStarter Kit",
     "crumbs": [
       "Introduction",
       "The starter kit"
@@ -33,12 +33,78 @@
   {
     "objectID": "circuitpython_datatypes.html",
     "href": "circuitpython_datatypes.html",
-    "title": "CircuitPython datatypes",
+    "title": "CircuitPython data types",
     "section": "",
-    "text": "content coming soon….",
+    "text": "Core built-in data types\nIn CircuitPython, data types are mostly the same as Python, but with important constraints due to limited memory and performance on microcontrollers.\nBelow is a complete, practical overview of CircuitPython data types, with notes on when and why to use each.",
     "crumbs": [
       "Introduction",
-      "CircuitPython datatypes"
+      "CircuitPython data types"
+    ]
+  },
+  {
+    "objectID": "circuitpython_datatypes.html#core-built-in-data-types",
+    "href": "circuitpython_datatypes.html#core-built-in-data-types",
+    "title": "CircuitPython data types",
+    "section": "",
+    "text": "NoneType\nx = None\n\n\nRepresents “no value”\nCommon for defaults or placeholders\n\n\n\nBoolean (bool)\nTrue, False\n\nUsed for logic and conditions\nVery small memory footprint\n\n\n\nIntegers (int)\nx = 42\n\nArbitrary precision in theory\nIn practice: limited by available RAM\nMuch cheaper than floats\n\n📌 Use ints whenever possible\n\n\nFloating Point (float)\nx = 3.14\n\n32-bit floats (single precision)\nSlower and more memory-hungry\nAvoid in tight loops if possible",
+    "crumbs": [
+      "Introduction",
+      "CircuitPython data types"
+    ]
+  },
+  {
+    "objectID": "circuitpython_datatypes.html#text-binary-data",
+    "href": "circuitpython_datatypes.html#text-binary-data",
+    "title": "CircuitPython data types",
+    "section": "Text & Binary Data",
+    "text": "Text & Binary Data\n\nStrings (str)\ns = \"hello\"\n\nUTF-8 strings\nImmutable (cannot be changed in place)\nRepeated concatenation causes fragmentation\n\n📌 Prefer building strings carefully or using buffers\n\n\nBytes (bytes)\nb = b\"ABC\"\n\nImmutable sequence of bytes\nEfficient for binary data\nCommon in I/O and communication\n\n\n\nBytearray (bytearray)\nbuf = bytearray(10)\n\nMutable sequence of bytes\nVery memory-efficient\nExcellent for buffers, sensors, displays\n\n⭐ Highly recommended for performance",
+    "crumbs": [
+      "Introduction",
+      "CircuitPython data types"
+    ]
+  },
+  {
+    "objectID": "circuitpython_datatypes.html#collections",
+    "href": "circuitpython_datatypes.html#collections",
+    "title": "CircuitPython data types",
+    "section": "Collections",
+    "text": "Collections\n\nTuple (tuple)\nt = (1, 2, 3)\n\nImmutable\nLower overhead than lists\nGood for constants\n\n\n\nList (list)\nlst = [1, 2, 3]\n\nMutable\nHigher memory overhead\nAvoid large or frequently resized lists\n\n\n\nDictionary (dict)\nd = {\"a\": 1, \"b\": 2}\n\nHigh memory cost\nSlower than lists/tuples\nUse sparingly on microcontrollers\n\n\n\nSet (set)\ns = {1, 2, 3}\n\nSupported, but expensive in memory\nRarely used in CircuitPython projects",
+    "crumbs": [
+      "Introduction",
+      "CircuitPython data types"
+    ]
+  },
+  {
+    "objectID": "circuitpython_datatypes.html#special-advanced-types",
+    "href": "circuitpython_datatypes.html#special-advanced-types",
+    "title": "CircuitPython data types",
+    "section": "Special & Advanced Types",
+    "text": "Special & Advanced Types\n\nRange (range)\nfor i in range(10):\n\nMemory-efficient\nDoes not create a list\nAlways prefer over list(range())\n\n\n\nMemoryview (memoryview)\nmv = memoryview(buf)\n\nZero-copy view of buffers\nExtremely efficient\nIdeal for slicing bytearrays\n\n⭐ Advanced but very powerful\n\n\nFunction (function)\ndef foo():\n    pass\n\nFirst-class objects\nMinimal overhead\n\n\n\nClass / Object (object)\nclass Foo:\n    pass\n\nSupported\nEach instance uses memory\nAvoid heavy OOP patterns",
+    "crumbs": [
+      "Introduction",
+      "CircuitPython data types"
+    ]
+  },
+  {
+    "objectID": "circuitpython_datatypes.html#not-available-or-limited",
+    "href": "circuitpython_datatypes.html#not-available-or-limited",
+    "title": "CircuitPython data types",
+    "section": "Not Available or Limited",
+    "text": "Not Available or Limited\n\n\n\nType\nStatus\n\n\n\n\ncomplex\n❌ Not supported\n\n\ndecimal\n❌ Not supported\n\n\nfractions\n❌ Not supported\n\n\nnumpy\n❌ Not available\n\n\nLarge recursion\n⚠️ Limited stack",
+    "crumbs": [
+      "Introduction",
+      "CircuitPython data types"
+    ]
+  },
+  {
+    "objectID": "circuitpython_datatypes.html#performance-memory-guidance-very-important",
+    "href": "circuitpython_datatypes.html#performance-memory-guidance-very-important",
+    "title": "CircuitPython data types",
+    "section": "Performance & Memory Guidance (Very Important)",
+    "text": "Performance & Memory Guidance (Very Important)\nBest choices for microcontrollers\n✔ int\n✔ bool\n✔ tuple\n✔ range\n✔ bytearray\n✔ memoryview\nUse sparingly\n⚠️ float\n⚠️ list\n⚠️ dict\n⚠️ set\n⚠️ str concatenation\nIn summary, CircuitPython supports most core Python data types, but memory-efficient types like int, bytearray, and range are strongly preferred.",
+    "crumbs": [
+      "Introduction",
+      "CircuitPython data types"
     ]
   },
   {

@@ -1,3 +1,208 @@
-# CircuitPython datatypes  {.unnumbered}
+# CircuitPython data types  {.unnumbered}
 
-content coming soon....
+In **CircuitPython**, data types are mostly the same as **Python**, but with **important constraints** due to limited memory and performance on microcontrollers.
+
+Below is a **complete, practical overview** of **CircuitPython data types**, with notes on when and why to use each.
+
+## Core built-in data types
+
+### NoneType
+```
+x = None
+
+```
+
+* Represents “no value”
+* Common for defaults or placeholders
+
+
+### Boolean (bool)
+```
+True, False
+```
+
+* Used for logic and conditions
+* Very small memory footprint
+
+
+### Integers (int)
+```
+x = 42
+```
+
+* Arbitrary precision in theory
+* In practice: limited by available RAM
+* Much cheaper than floats
+
+📌 Use ints whenever possible
+
+
+### Floating Point (float)
+```
+x = 3.14
+```
+
+* 32-bit floats (single precision)
+* Slower and more memory-hungry
+* Avoid in tight loops if possible
+
+
+## Text & Binary Data
+
+### Strings (str)
+```
+s = "hello"
+```
+
+* UTF-8 strings
+* Immutable (cannot be changed in place)
+* Repeated concatenation causes fragmentation
+
+📌 Prefer building strings carefully or using buffers
+
+
+### Bytes (bytes)
+```
+b = b"ABC"
+```
+
+* Immutable sequence of bytes
+* Efficient for binary data
+* Common in I/O and communication
+
+### Bytearray (bytearray)
+```
+buf = bytearray(10)
+```
+
+* Mutable sequence of bytes
+* Very memory-efficient
+* Excellent for buffers, sensors, displays
+
+⭐ Highly recommended for performance
+
+
+## Collections
+
+### Tuple (tuple)
+```
+t = (1, 2, 3)
+```
+
+* Immutable
+* Lower overhead than lists
+* Good for constants
+
+
+### List (list)
+```
+lst = [1, 2, 3]
+```
+
+* Mutable
+* Higher memory overhead
+* Avoid large or frequently resized lists
+
+
+### Dictionary (dict)
+```
+d = {"a": 1, "b": 2}
+```
+
+* High memory cost
+* Slower than lists/tuples
+* Use sparingly on microcontrollers
+
+
+### Set (set)
+```
+s = {1, 2, 3}
+```
+
+* Supported, but expensive in memory
+* Rarely used in CircuitPython projects
+
+
+## Special & Advanced Types
+
+### Range (range)
+```
+for i in range(10):
+```
+
+* Memory-efficient
+* Does not create a list
+* Always prefer over list(range())
+
+
+### Memoryview (memoryview)
+```
+mv = memoryview(buf)
+```
+
+* Zero-copy view of buffers
+* Extremely efficient
+* Ideal for slicing bytearrays
+
+⭐ Advanced but very powerful
+
+
+### Function (function)
+```
+def foo():
+    pass
+```
+
+* First-class objects
+* Minimal overhead
+
+### Class / Object (object)
+```
+class Foo:
+    pass
+```
+
+* Supported
+* Each instance uses memory
+* Avoid heavy OOP patterns
+
+
+## Not Available or Limited
+| Type            | Status           |
+| --------------- | ---------------- |
+| `complex`       | ❌ Not supported  |
+| `decimal`       | ❌ Not supported  |
+| `fractions`     | ❌ Not supported  |
+| `numpy`         | ❌ Not available  |
+| Large recursion | ⚠️ Limited stack |
+
+
+## Performance & Memory Guidance (Very Important)
+Best choices for microcontrollers
+
+✔ int
+
+✔ bool
+
+✔ tuple
+
+✔ range
+
+✔ bytearray
+
+✔ memoryview
+
+Use sparingly
+
+⚠️ float
+
+
+⚠️ list
+
+⚠️ dict
+
+⚠️ set
+
+⚠️ str concatenation
+
+In summary, CircuitPython supports most core Python data types, but memory-efficient types like int, bytearray, and range are strongly preferred.

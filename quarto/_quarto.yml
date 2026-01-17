@@ -25,6 +25,7 @@ bibliography: references.bib
 
 format:
   html:
+    code-copy: true
     theme:
       - cosmo
       - brand
