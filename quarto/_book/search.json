@@ -133,7 +133,40 @@
     "href": "testing_board.html",
     "title": "Testing your board",
     "section": "",
-    "text": "content coming soon…",
+    "text": "Serial output\nA new installation of CircuitPython provides the following sample program (code.py):\nOpen the serial monitor in VS Code and you should see the following output:",
+    "crumbs": [
+      "Getting Started",
+      "Testing your board"
+    ]
+  },
+  {
+    "objectID": "testing_board.html#serial-output",
+    "href": "testing_board.html#serial-output",
+    "title": "Testing your board",
+    "section": "",
+    "text": "print(\"Hello World!\")\n\n\ncode.py output:\n\n\nHello World!\n\n\nCode done running.\n\n\nPress any key to enter the REPL. Use CTRL-D to reload.",
+    "crumbs": [
+      "Getting Started",
+      "Testing your board"
+    ]
+  },
+  {
+    "objectID": "testing_board.html#flash-onboard-led",
+    "href": "testing_board.html#flash-onboard-led",
+    "title": "Testing your board",
+    "section": "Flash onboard LED",
+    "text": "Flash onboard LED",
+    "crumbs": [
+      "Getting Started",
+      "Testing your board"
+    ]
+  },
+  {
+    "objectID": "testing_board.html#flash-onboard-neopixel",
+    "href": "testing_board.html#flash-onboard-neopixel",
+    "title": "Testing your board",
+    "section": "Flash onboard NeoPixel",
+    "text": "Flash onboard NeoPixel",
     "crumbs": [
       "Getting Started",
       "Testing your board"
