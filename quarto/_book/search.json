@@ -122,7 +122,29 @@
     "href": "setting_up_board.html",
     "title": "Setting up your board",
     "section": "",
-    "text": "content coming soon…",
+    "text": "CircuitPython",
+    "crumbs": [
+      "Getting Started",
+      "Setting up your board"
+    ]
+  },
+  {
+    "objectID": "setting_up_board.html#vs-code",
+    "href": "setting_up_board.html#vs-code",
+    "title": "Setting up your board",
+    "section": "VS Code",
+    "text": "VS Code\nVisual Studio Code (VS Code) is a free, lightweight, and highly popular source-code editor developed by Microsoft. It’s designed for programmers to write, debug, and manage code efficiently across many languages.\n\nKey Features\n\nMulti-Language Support\nWorks with Python, JavaScript, C++, Java, Go, Rust, HTML/CSS, and many more.\nSyntax highlighting and code completion for each language.\n\n\nExtensions & Marketplace\nThousands of extensions to add new languages, tools, and themes.\nExamples: Python, GitHub Copilot, Prettier, ESLint.\n\n\nIntegrated Terminal\nYou can run commands directly in the editor.\nSupports PowerShell, Command Prompt, bash, and others.\n\n\nDebugging\nBuilt-in debugger for many languages.\nCan set breakpoints, inspect variables, and step through code.\n\n\nGit & Version Control\nNative integration with Git.\nCommit, push, pull, and view changes without leaving the editor.\n\n\nIntelliSense\nSmart code suggestions, autocompletion, and parameter hints.\nHelps you write code faster and reduce errors.\n\n\nCross-Platform\nRuns on Windows, macOS, and Linux.\n\n\n\nInstallation\nFollow this link and download appropriate installer for your platform:\nhttps://code.visualstudio.com/",
+    "crumbs": [
+      "Getting Started",
+      "Setting up your board"
+    ]
+  },
+  {
+    "objectID": "setting_up_board.html#circuitpython-extension-for-vs-code",
+    "href": "setting_up_board.html#circuitpython-extension-for-vs-code",
+    "title": "Setting up your board",
+    "section": "CircuitPython extension for VS Code",
+    "text": "CircuitPython extension for VS Code\n\nKey Features\n\nSyntax Highlighting\n\nHighlights CircuitPython code (Python 3 syntax plus Adafruit-specific modules like board, digitalio, neopixel).\n\n\n\nSnippets\nProvides quick code snippets for common tasks:\n\nControlling LEDs\nReading sensors\nUsing I2C/SPI devices\nNeoPixel strips\n\n\n\nLibrary Awareness\nHelps you see which CircuitPython libraries are used and suggests installing them into your lib folder.\n\n\nCode Navigation\nJump to definitions and auto-complete for CircuitPython modules.\nIntegration with USB Drive\nWorks well when your board appears as CIRCUITPY:\n\nQuickly copy code.py to the board\nRecognizes the board type and version\n\nHelpful Documentation\n\nProvides inline help for Adafruit modules.\n\n\n\n\nInstallation and use\nThis guide explains how to install and use the CircuitPython extension for VS Code:\nhttps://learn.adafruit.com/using-the-circuitpython-extension-for-visual-studio-code/overview",
     "crumbs": [
       "Getting Started",
       "Setting up your board"
@@ -133,7 +155,7 @@
     "href": "testing_board.html",
     "title": "Testing your board",
     "section": "",
-    "text": "Serial output\nA new installation of CircuitPython provides the following sample program (code.py):\nOpen the serial monitor in VS Code and you should see the following output:",
+    "text": "Serial output\nA new installation of CircuitPython provides the following sample program (code.py):\nOpen the serial monitor in VS Code and you should see the following output:\nYou may need to send CTRL-D to reload.",
     "crumbs": [
       "Getting Started",
       "Testing your board"
@@ -155,7 +177,7 @@
     "href": "testing_board.html#flash-onboard-led",
     "title": "Testing your board",
     "section": "Flash onboard LED",
-    "text": "Flash onboard LED",
+    "text": "Flash onboard LED\nhttps://github.com/WaylandM/Biomaker-CircuitPython/blob/main/examples/flash_onboard_led/code.py\nThis program wil\nimport time\nimport board\nimport digitalio\n\nled = digitalio.DigitalInOut(board.LED)\nled.direction = digitalio.Direction.OUTPUT\n\nwhile True:\n    led.value = True   # LED on\n    time.sleep(0.5)\n    led.value = False  # LED off\n    time.sleep(0.5)",
     "crumbs": [
       "Getting Started",
       "Testing your board"
@@ -166,7 +188,7 @@
     "href": "testing_board.html#flash-onboard-neopixel",
     "title": "Testing your board",
     "section": "Flash onboard NeoPixel",
-    "text": "Flash onboard NeoPixel",
+    "text": "Flash onboard NeoPixel\nDownload project bundle",
     "crumbs": [
       "Getting Started",
       "Testing your board"

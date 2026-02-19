@@ -189,8 +189,24 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#circuitpython" id="toc-circuitpython" class="nav-link active" data-scroll-target="#circuitpython">CircuitPython</a></li>
+  <li><a href="#vs-code" id="toc-vs-code" class="nav-link" data-scroll-target="#vs-code">VS Code</a>
+  <ul class="collapse">
+  <li><a href="#key-features" id="toc-key-features" class="nav-link" data-scroll-target="#key-features">Key Features</a></li>
+  <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation">Installation</a></li>
+  </ul></li>
+  <li><a href="#circuitpython-extension-for-vs-code" id="toc-circuitpython-extension-for-vs-code" class="nav-link" data-scroll-target="#circuitpython-extension-for-vs-code">CircuitPython extension for VS Code</a>
+  <ul class="collapse">
+  <li><a href="#key-features-1" id="toc-key-features-1" class="nav-link" data-scroll-target="#key-features-1">Key Features</a></li>
+  <li><a href="#installation-and-use" id="toc-installation-and-use" class="nav-link" data-scroll-target="#installation-and-use">Installation and use</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -214,9 +230,102 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>content coming soon…</p>
+<section id="circuitpython" class="level2">
+<h2 class="anchored" data-anchor-id="circuitpython">CircuitPython</h2>
+</section>
+<section id="vs-code" class="level2">
+<h2 class="anchored" data-anchor-id="vs-code">VS Code</h2>
+<p>Visual Studio Code (VS Code) is a free, lightweight, and highly popular source-code editor developed by Microsoft. It’s designed for programmers to write, debug, and manage code efficiently across many languages.</p>
+<section id="key-features" class="level3">
+<h3 class="anchored" data-anchor-id="key-features">Key Features</h3>
+<section id="multi-language-support" class="level4">
+<h4 class="anchored" data-anchor-id="multi-language-support">Multi-Language Support</h4>
+<p>Works with Python, JavaScript, C++, Java, Go, Rust, HTML/CSS, and many more.</p>
+<p>Syntax highlighting and code completion for each language.</p>
+</section>
+<section id="extensions-marketplace" class="level4">
+<h4 class="anchored" data-anchor-id="extensions-marketplace">Extensions &amp; Marketplace</h4>
+<p>Thousands of extensions to add new languages, tools, and themes.</p>
+<p>Examples: Python, GitHub Copilot, Prettier, ESLint.</p>
+</section>
+<section id="integrated-terminal" class="level4">
+<h4 class="anchored" data-anchor-id="integrated-terminal">Integrated Terminal</h4>
+<p>You can run commands directly in the editor.</p>
+<p>Supports PowerShell, Command Prompt, bash, and others.</p>
+</section>
+<section id="debugging" class="level4">
+<h4 class="anchored" data-anchor-id="debugging">Debugging</h4>
+<p>Built-in debugger for many languages.</p>
+<p>Can set breakpoints, inspect variables, and step through code.</p>
+</section>
+<section id="git-version-control" class="level4">
+<h4 class="anchored" data-anchor-id="git-version-control">Git &amp; Version Control</h4>
+<p>Native integration with Git.</p>
+<p>Commit, push, pull, and view changes without leaving the editor.</p>
+</section>
+<section id="intellisense" class="level4">
+<h4 class="anchored" data-anchor-id="intellisense">IntelliSense</h4>
+<p>Smart code suggestions, autocompletion, and parameter hints.</p>
+<p>Helps you write code faster and reduce errors.</p>
+</section>
+<section id="cross-platform" class="level4">
+<h4 class="anchored" data-anchor-id="cross-platform">Cross-Platform</h4>
+<p>Runs on Windows, macOS, and Linux.</p>
+</section>
+</section>
+<section id="installation" class="level3">
+<h3 class="anchored" data-anchor-id="installation">Installation</h3>
+<p>Follow this link and download appropriate installer for your platform:</p>
+<p><a href="https://code.visualstudio.com/" class="uri">https://code.visualstudio.com/</a></p>
+</section>
+</section>
+<section id="circuitpython-extension-for-vs-code" class="level2">
+<h2 class="anchored" data-anchor-id="circuitpython-extension-for-vs-code">CircuitPython extension for VS Code</h2>
+<section id="key-features-1" class="level3">
+<h3 class="anchored" data-anchor-id="key-features-1">Key Features</h3>
+<section id="syntax-highlighting" class="level4">
+<h4 class="anchored" data-anchor-id="syntax-highlighting">Syntax Highlighting</h4>
+<ul>
+<li>Highlights CircuitPython code (Python 3 syntax plus Adafruit-specific modules like board, digitalio, neopixel).</li>
+</ul>
+</section>
+<section id="snippets" class="level4">
+<h4 class="anchored" data-anchor-id="snippets">Snippets</h4>
+<p>Provides quick code snippets for common tasks:</p>
+<ul>
+<li>Controlling LEDs</li>
+<li>Reading sensors</li>
+<li>Using I2C/SPI devices</li>
+<li>NeoPixel strips</li>
+</ul>
+</section>
+<section id="library-awareness" class="level4">
+<h4 class="anchored" data-anchor-id="library-awareness">Library Awareness</h4>
+<p>Helps you see which CircuitPython libraries are used and suggests installing them into your lib folder.</p>
+</section>
+<section id="code-navigation" class="level4">
+<h4 class="anchored" data-anchor-id="code-navigation">Code Navigation</h4>
+<p>Jump to definitions and auto-complete for CircuitPython modules.</p>
+<p>Integration with USB Drive</p>
+<p>Works well when your board appears as CIRCUITPY:</p>
+<ul>
+<li><p>Quickly copy code.py to the board</p></li>
+<li><p>Recognizes the board type and version</p></li>
+</ul>
+<p>Helpful Documentation</p>
+<ul>
+<li>Provides inline help for Adafruit modules.</li>
+</ul>
+</section>
+</section>
+<section id="installation-and-use" class="level3">
+<h3 class="anchored" data-anchor-id="installation-and-use">Installation and use</h3>
+<p>This guide explains how to install and use the CircuitPython extension for VS Code:</p>
+<p><a href="https://learn.adafruit.com/using-the-circuitpython-extension-for-visual-studio-code/overview" class="uri">https://learn.adafruit.com/using-the-circuitpython-extension-for-visual-studio-code/overview</a></p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

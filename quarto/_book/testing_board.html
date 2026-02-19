@@ -239,12 +239,28 @@ ul.task-list li input[type="checkbox"] {
 <blockquote class="blockquote">
 <p>Press any key to enter the REPL. Use CTRL-D to reload.</p>
 </blockquote>
+<p>You may need to send CTRL-D to reload.</p>
 </section>
 <section id="flash-onboard-led" class="level2">
 <h2 class="anchored" data-anchor-id="flash-onboard-led">Flash onboard LED</h2>
+<p><a href="https://github.com/WaylandM/Biomaker-CircuitPython/blob/main/examples/flash_onboard_led/code.py" class="uri">https://github.com/WaylandM/Biomaker-CircuitPython/blob/main/examples/flash_onboard_led/code.py</a></p>
+<p>This program wil</p>
+<pre><code>import time
+import board
+import digitalio
+
+led = digitalio.DigitalInOut(board.LED)
+led.direction = digitalio.Direction.OUTPUT
+
+while True:
+    led.value = True   # LED on
+    time.sleep(0.5)
+    led.value = False  # LED off
+    time.sleep(0.5)</code></pre>
 </section>
 <section id="flash-onboard-neopixel" class="level2">
 <h2 class="anchored" data-anchor-id="flash-onboard-neopixel">Flash onboard NeoPixel</h2>
+<p>Download project bundle</p>
 
 
 </section>

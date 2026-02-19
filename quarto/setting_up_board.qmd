@@ -1,3 +1,98 @@
 # Setting up your board {.unnumbered}
 
-content coming soon...
+## CircuitPython
+
+
+## VS Code
+Visual Studio Code (VS Code) is a free, lightweight, and highly popular source-code editor developed by Microsoft. It’s designed for programmers to write, debug, and manage code efficiently across many languages.
+
+### Key Features
+#### Multi-Language Support
+
+Works with Python, JavaScript, C++, Java, Go, Rust, HTML/CSS, and many more.
+
+Syntax highlighting and code completion for each language.
+
+#### Extensions & Marketplace
+
+Thousands of extensions to add new languages, tools, and themes.
+
+Examples: Python, GitHub Copilot, Prettier, ESLint.
+
+#### Integrated Terminal
+
+You can run commands directly in the editor.
+
+Supports PowerShell, Command Prompt, bash, and others.
+
+#### Debugging
+
+Built-in debugger for many languages.
+
+Can set breakpoints, inspect variables, and step through code.
+
+#### Git & Version Control
+
+Native integration with Git.
+
+Commit, push, pull, and view changes without leaving the editor.
+
+#### IntelliSense
+
+Smart code suggestions, autocompletion, and parameter hints.
+
+Helps you write code faster and reduce errors.
+
+#### Cross-Platform
+
+Runs on Windows, macOS, and Linux.
+
+### Installation
+
+Follow this link and download appropriate installer for your platform:
+
+<https://code.visualstudio.com/>
+
+
+## CircuitPython extension for VS Code 
+
+### Key Features
+
+#### Syntax Highlighting
+
+* Highlights CircuitPython code (Python 3 syntax plus Adafruit-specific modules like board, digitalio, neopixel).
+
+#### Snippets
+
+Provides quick code snippets for common tasks:
+
+* Controlling LEDs
+* Reading sensors
+* Using I2C/SPI devices
+* NeoPixel strips
+
+#### Library Awareness
+
+Helps you see which CircuitPython libraries are used and suggests installing them into your lib folder.
+
+#### Code Navigation
+
+Jump to definitions and auto-complete for CircuitPython modules.
+
+Integration with USB Drive
+
+Works well when your board appears as CIRCUITPY:
+
+* Quickly copy code.py to the board
+
+* Recognizes the board type and version
+
+Helpful Documentation
+
+* Provides inline help for Adafruit modules.
+
+### Installation and use
+
+This guide explains how to install and use the CircuitPython extension for VS Code:
+
+<https://learn.adafruit.com/using-the-circuitpython-extension-for-visual-studio-code/overview>

@@ -22,7 +22,7 @@ You may need to send CTRL-D to reload.
 
 ## Flash onboard LED
 
-https://github.com/WaylandM/Biomaker-CircuitPython/blob/main/examples/flash_onboard_led/code.py
+<https://github.com/WaylandM/Biomaker-CircuitPython/blob/main/examples/flash_onboard_led/code.py>
 
 This program wil
 ```
