@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -244,22 +279,119 @@ ul.task-list li input[type="checkbox"] {
 <section id="flash-onboard-led" class="level2">
 <h2 class="anchored" data-anchor-id="flash-onboard-led">Flash onboard LED</h2>
 <p><a href="https://github.com/WaylandM/Biomaker-CircuitPython/blob/main/examples/flash_onboard_led/code.py" class="uri">https://github.com/WaylandM/Biomaker-CircuitPython/blob/main/examples/flash_onboard_led/code.py</a></p>
-<p>This program wil</p>
-<pre><code>import time
-import board
-import digitalio
-
-led = digitalio.DigitalInOut(board.LED)
-led.direction = digitalio.Direction.OUTPUT
-
-while True:
-    led.value = True   # LED on
-    time.sleep(0.5)
-    led.value = False  # LED off
-    time.sleep(0.5)</code></pre>
+<p>Content of code.py:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> board</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> digitalio</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>led <span class="op">=</span> digitalio.DigitalInOut(board.LED)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>led.direction <span class="op">=</span> digitalio.Direction.OUTPUT</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    led.value <span class="op">=</span> <span class="va">True</span>   <span class="co"># LED on</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    time.sleep(<span class="fl">0.5</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    led.value <span class="op">=</span> <span class="va">False</span>  <span class="co"># LED off</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    time.sleep(<span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This script will:</p>
+<ol type="1">
+<li>Set up the onboard LED pin as a digital output.</li>
+<li>Turn in on for 0.5 seconds.</li>
+<li>Turn it off for 0.5 seconds.</li>
+<li>Repeat this on-off cycle indefinitely.</li>
+</ol>
+<p>Let’s go through the example line by line and explain what each part does.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> board</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> digitalio</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><code>time</code> gives access to timing functions like <code>sleep()</code>.</li>
+<li><code>board</code> contains names for the physical pins on your specific board (like <code>board.LED</code>).</li>
+<li><code>digitalio</code> lets you control pins as simple on/off digital signals.</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>led <span class="op">=</span> digitalio.DigitalInOut(board.LED)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><code>board.LED</code> is a predefined pin that’s connected to the onboard LED.</li>
+<li><code>DigitalInOut(...)</code> creates an object that lets you control that pin.</li>
+<li>The variable <code>led</code> now represents the LED pin.</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>led.direction <span class="op">=</span> digitalio.Direction.OUTPUT</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Pins can be inputs (read signals) or outputs (send signals).</li>
+<li>Here we set the LED pin to be an <strong>output</strong>, so we can drive it on and off.</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="va">True</span>:</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>This starts an infinite loop.</li>
+<li>Everything indented underneath will repeat forever until the board is reset or powered off.</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>    led.value <span class="op">=</span> <span class="va">True</span>   <span class="co"># LED on</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Setting <code>value</code> to <code>True</code> sends a HIGH signal to the pin.</li>
+<li>On most boards this turns the LED on.</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>    time.sleep(<span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Pause the program for 0.5 seconds (500 milliseconds).</li>
+<li>The LED stays on during this pause.</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>    led.value <span class="op">=</span> <span class="va">False</span>  <span class="co"># LED off</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Setting <code>value</code> to <code>False</code> sends a LOW signal.</li>
+<li>This turns the LED off.</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>    time.sleep(<span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Wait another 0.5 seconds with the LED off.</li>
+<li>Then the loop repeats, so the LED turns on again.</li>
+</ul>
+<p>Overall behaviour:</p>
+<ol type="1">
+<li>Turn LED on</li>
+<li>Wait half a second</li>
+<li>Turn LED off</li>
+<li>Wait half a second</li>
+<li>Repeat forever</li>
+</ol>
+<p>That creates a steady blink: on–off–on–off every second.</p>
 </section>
 <section id="flash-onboard-neopixel" class="level2">
 <h2 class="anchored" data-anchor-id="flash-onboard-neopixel">Flash onboard NeoPixel</h2>
+<p><a href="https://github.com/WaylandM/Biomaker-CircuitPython/tree/main/examples/flash_onboard_neopixel_led" class="uri">https://github.com/WaylandM/Biomaker-CircuitPython/tree/main/examples/flash_onboard_neopixel_led</a></p>
+<p>Content of code.py:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> board</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> neopixel</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>pixel <span class="op">=</span> neopixel.NeoPixel(board.NEOPIXEL, <span class="dv">1</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    pixel[<span class="dv">0</span>] <span class="op">=</span> (<span class="dv">50</span>, <span class="dv">0</span>, <span class="dv">0</span>)  <span class="co"># red</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    time.sleep(<span class="fl">0.5</span>)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    pixel[<span class="dv">0</span>] <span class="op">=</span> (<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>)   <span class="co"># off</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    time.sleep(<span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Line by line explanation:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>pixel <span class="op">=</span> neopixel.NeoPixel(board.NEOPIXEL, <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Creates a NeoPixel controller on the pin connected to the onboard RGB LED.</li>
+<li><code>1</code> means there is one pixel.</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>pixel[<span class="dv">0</span>] <span class="op">=</span> (<span class="dv">50</span>, <span class="dv">0</span>, <span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Sets pixel 0 to a colour using RGB values.</li>
+<li><code>(50, 0, 0)</code> = red (brightness 50 out of 255).</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>pixel[<span class="dv">0</span>] <span class="op">=</span> (<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Sets the pixel to black (all channels 0) = off.</li>
+</ul>
+<p>The same infinite loop and <code>time.sleep(0.5)</code> calls make it blink on and off.</p>
+<p>In both cases, you’re just repeatedly:</p>
+<ul>
+<li>writing a value to the LED</li>
+<li>waiting a bit</li>
+<li>writing the opposite value</li>
+<li>waiting again</li>
+</ul>
 <p>Download project bundle</p>
 
 
