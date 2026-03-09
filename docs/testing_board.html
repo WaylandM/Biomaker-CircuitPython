@@ -189,8 +189,16 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#serial-output" id="toc-serial-output" class="nav-link active" data-scroll-target="#serial-output">Serial output</a></li>
+  <li><a href="#flash-onboard-led" id="toc-flash-onboard-led" class="nav-link" data-scroll-target="#flash-onboard-led">Flash onboard LED</a></li>
+  <li><a href="#flash-onboard-neopixel" id="toc-flash-onboard-neopixel" class="nav-link" data-scroll-target="#flash-onboard-neopixel">Flash onboard NeoPixel</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -214,9 +222,48 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>content coming soon…</p>
+<section id="serial-output" class="level2">
+<h2 class="anchored" data-anchor-id="serial-output">Serial output</h2>
+<p>A new installation of CircuitPython provides the following sample program (code.py):</p>
+<pre><code>print("Hello World!")</code></pre>
+<p>Open the serial monitor in VS Code and you should see the following output:</p>
+<blockquote class="blockquote">
+<p>code.py output:</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Hello World!</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Code done running.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Press any key to enter the REPL. Use CTRL-D to reload.</p>
+</blockquote>
+<p>You may need to send CTRL-D to reload.</p>
+</section>
+<section id="flash-onboard-led" class="level2">
+<h2 class="anchored" data-anchor-id="flash-onboard-led">Flash onboard LED</h2>
+<p><a href="https://github.com/WaylandM/Biomaker-CircuitPython/blob/main/examples/flash_onboard_led/code.py" class="uri">https://github.com/WaylandM/Biomaker-CircuitPython/blob/main/examples/flash_onboard_led/code.py</a></p>
+<p>This program wil</p>
+<pre><code>import time
+import board
+import digitalio
+
+led = digitalio.DigitalInOut(board.LED)
+led.direction = digitalio.Direction.OUTPUT
+
+while True:
+    led.value = True   # LED on
+    time.sleep(0.5)
+    led.value = False  # LED off
+    time.sleep(0.5)</code></pre>
+</section>
+<section id="flash-onboard-neopixel" class="level2">
+<h2 class="anchored" data-anchor-id="flash-onboard-neopixel">Flash onboard NeoPixel</h2>
+<p>Download project bundle</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
