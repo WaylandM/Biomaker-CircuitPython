@@ -1,0 +1,237 @@
+# Testing your Arduino Sensor Kit Base {.unnumbered}
+
+
+## Basic LED blink
+
+```python
+import time
+import board
+import digitalio
+
+# The LED on the sensor kit base is connected to pin D4 (GP4)
+led = digitalio.DigitalInOut(board.GP4)   # Change pin if needed
+led.direction = digitalio.Direction.OUTPUT
+
+while True:
+    led.value = True   # LED ON
+    time.sleep(0.5)
+
+    led.value = False  # LED OFF
+    time.sleep(0.5)
+
+```
+
+## Non-blocking LED blink
+
+A **non-blocking blink** means the LED toggles based on time checks instead of time.sleep(). This lets the microcontroller **do other work in the loop** (read sensors, handle buttons, etc.) while the LED blinks.
+
+```python
+import time
+import board
+import digitalio
+
+led = digitalio.DigitalInOut(board.GP4)
+led.direction = digitalio.Direction.OUTPUT
+
+blink_interval = 0.5  # seconds
+last_toggle = time.monotonic()
+
+while True:
+    current_time = time.monotonic()
+
+    if current_time - last_toggle >= blink_interval:
+        led.value = not led.value
+        last_toggle = current_time
+
+    # Other code can run here without being blocked
+    # Example:
+    # read sensors
+    # check buttons
+
+```
+
+### Why this is better
+
+`time.sleep()` blocks the CPU. Using `time.monotonic()`:
+
+* loop keeps running continuously
+* multiple tasks can run at once
+* timing stays consistent
+
+
+## PWM LED Fade (Smooth Breathing Effect)
+
+To **fade an LED with PWM in CircuitPython**, you use the `pwmio` module and gradually change the duty cycle.
+
+```python
+
+import time
+import board
+import pwmio
+
+# Create PWM output on LED pin
+led = pwmio.PWMOut(board.GP4, frequency=1000)
+
+while True:
+    # Fade in
+    for duty in range(0, 65535, 500):
+        led.duty_cycle = duty
+        time.sleep(0.01)
+
+    # Fade out
+    for duty in range(65535, 0, -500):
+        led.duty_cycle = duty
+        time.sleep(0.01)
+```
+
+### How it works
+
+* `duty_cycle` range: 0 → 65535
+* `0` = LED off
+* `65535` = full brightness
+* Increasing the duty cycle gradually creates the **fade-in** effect.
+
+
+## Optional: smoother fade
+
+Use smaller steps:
+
+```python
+range(0, 65535, 100)
+```
+
+## Optional: breathing LED (continuous smooth loop)
+
+```python
+import time
+import board
+import pwmio
+
+led = pwmio.PWMOut(board.GP4, frequency=1000)
+
+brightness = 0
+fade_amount = 500
+
+while True:
+    led.duty_cycle = brightness
+    brightness += fade_amount
+
+    if brightness <= 0 or brightness >= 65535:
+        fade_amount = -fade_amount
+
+    time.sleep(0.01)
+```
+
+This produces a continuous breathing effect often used as a status indicator.
+
+
+## Gamma-Corrected LED Fade
+
+Gamma correction makes LED fading look smooth to human eyes. Without it, most brightness change appears at the high end because human vision is non-linear. Gamma correction compensates for that.
+
+Typical gamma value: ~2.2
+
+```python
+import time
+import board
+import pwmio
+import math
+
+led = pwmio.PWMOut(board.GP4, frequency=1000)
+
+gamma = 2.2
+steps = 100
+
+while True:
+    # Fade in
+    for i in range(steps):
+        x = i / (steps - 1)
+        corrected = math.pow(x, gamma)
+        led.duty_cycle = int(corrected * 65535)
+        time.sleep(0.01)
+
+    # Fade out
+    for i in reversed(range(steps)):
+        x = i / (steps - 1)
+        corrected = math.pow(x, gamma)
+        led.duty_cycle = int(corrected * 65535)
+        time.sleep(0.01)
+```
+
+### Key idea
+
+Brightness is corrected like this:
+```python
+corrected = brightness ^ gamma
+```
+
+Example (gamma ≈ 2.2):
+
+| Linear input | Perceived brightness | PWM output |
+| ------------ | -------------------- | ---------- |
+| 0.1          | very dim             | ~0.006     |
+| 0.5          | medium               | ~0.22      |
+| 0.8          | bright               | ~0.61      |
+
+This produces a much smoother fade, especially at low brightness.
+
+## Faster Method (Gamma Lookup Table)
+
+Computing `pow()` every loop is slower on microcontrollers. A **lookup table** is faster.
+
+```python
+import time
+import board
+import pwmio
+
+led = pwmio.PWMOut(board.GP4, frequency=1000)
+
+gamma = 2.2
+steps = 100
+
+# Precompute gamma table
+gamma_table = [
+    int((i / (steps - 1)) ** gamma * 65535)
+    for i in range(steps)
+]
+
+while True:
+    for v in gamma_table:
+        led.duty_cycle = v
+        time.sleep(0.01)
+
+    for v in reversed(gamma_table):
+        led.duty_cycle = v
+        time.sleep(0.01)
+```
+
+Benefits:
+
+* smoother animation
+* less CPU work
+* better for multiple LEDs
+
+
+## Bonus: Perceptually Smooth Breathing LED
+
+```python
+import time
+import board
+import pwmio
+import math
+
+led = pwmio.PWMOut(board.GP4, frequency=1000)
+
+t = 0
+
+while True:
+    brightness = (math.sin(t) + 1) / 2
+    corrected = brightness ** 2.2
+    led.duty_cycle = int(corrected * 65535)
+
+    t += 0.05
+    time.sleep(0.01)
+```
+
+This produces a very smooth Apple-style breathing LED.
+

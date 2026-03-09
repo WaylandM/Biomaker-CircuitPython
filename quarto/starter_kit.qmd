@@ -1,5 +1,9 @@
 # The starter kit  {.unnumbered}
 
-content coming soon ...
+![Adafruit Metro ESP32S3](images/adafruit_products_MS3_pinouts.jpg)
 
-![Starter Kit](images/sensor-kit-base.jpg)
+![Underside of the Adafruit Metro ESP32S3](images/adafruit_products_MS3_pinouts_back.jpg)
+
+![Adafruit Metro ESP32S3 pinout](images/adafruit_products_adafruitMetroEsp32S3prettyPins.png)
+
+![Arduino Sensor Kit Base](images/sensor-kit-base.jpg)

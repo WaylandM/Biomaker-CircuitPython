@@ -24,7 +24,7 @@
     "href": "starter_kit.html",
     "title": "The starter kit",
     "section": "",
-    "text": "content coming soon …\n\n\n\nStarter Kit",
+    "text": "Adafruit Metro ESP32S3\n\n\n\n\n\nUnderside of the Adafruit Metro ESP32S3\n\n\n\n\n\nAdafruit Metro ESP32S3 pinout\n\n\n\n\n\nArduino Sensor Kit Base",
     "crumbs": [
       "Introduction",
       "The starter kit"
@@ -192,6 +192,105 @@
     "crumbs": [
       "Getting Started",
       "Testing your board"
+    ]
+  },
+  {
+    "objectID": "testing_sensor_kit_base.html",
+    "href": "testing_sensor_kit_base.html",
+    "title": "Testing your Arduino Sensor Kit Base",
+    "section": "",
+    "text": "Basic LED blink",
+    "crumbs": [
+      "Getting Started",
+      "Testing your Arduino Sensor Kit Base"
+    ]
+  },
+  {
+    "objectID": "testing_sensor_kit_base.html#basic-led-blink",
+    "href": "testing_sensor_kit_base.html#basic-led-blink",
+    "title": "Testing your Arduino Sensor Kit Base",
+    "section": "",
+    "text": "import time\nimport board\nimport digitalio\n\n# The LED on the sensor kit base is connected to pin D4 (GP4)\nled = digitalio.DigitalInOut(board.GP4)   # Change pin if needed\nled.direction = digitalio.Direction.OUTPUT\n\nwhile True:\n    led.value = True   # LED ON\n    time.sleep(0.5)\n\n    led.value = False  # LED OFF\n    time.sleep(0.5)",
+    "crumbs": [
+      "Getting Started",
+      "Testing your Arduino Sensor Kit Base"
+    ]
+  },
+  {
+    "objectID": "testing_sensor_kit_base.html#non-blocking-led-blink",
+    "href": "testing_sensor_kit_base.html#non-blocking-led-blink",
+    "title": "Testing your Arduino Sensor Kit Base",
+    "section": "Non-blocking LED blink",
+    "text": "Non-blocking LED blink\nA non-blocking blink means the LED toggles based on time checks instead of time.sleep(). This lets the microcontroller do other work in the loop (read sensors, handle buttons, etc.) while the LED blinks.\nimport time\nimport board\nimport digitalio\n\nled = digitalio.DigitalInOut(board.GP4)\nled.direction = digitalio.Direction.OUTPUT\n\nblink_interval = 0.5  # seconds\nlast_toggle = time.monotonic()\n\nwhile True:\n    current_time = time.monotonic()\n\n    if current_time - last_toggle &gt;= blink_interval:\n        led.value = not led.value\n        last_toggle = current_time\n\n    # Other code can run here without being blocked\n    # Example:\n    # read sensors\n    # check buttons\n\nWhy this is better\ntime.sleep() blocks the CPU. Using time.monotonic():\n\nloop keeps running continuously\nmultiple tasks can run at once\ntiming stays consistent",
+    "crumbs": [
+      "Getting Started",
+      "Testing your Arduino Sensor Kit Base"
+    ]
+  },
+  {
+    "objectID": "testing_sensor_kit_base.html#pwm-led-fade-smooth-breathing-effect",
+    "href": "testing_sensor_kit_base.html#pwm-led-fade-smooth-breathing-effect",
+    "title": "Testing your Arduino Sensor Kit Base",
+    "section": "PWM LED Fade (Smooth Breathing Effect)",
+    "text": "PWM LED Fade (Smooth Breathing Effect)\nTo fade an LED with PWM in CircuitPython, you use the pwmio module and gradually change the duty cycle.\n\nimport time\nimport board\nimport pwmio\n\n# Create PWM output on LED pin\nled = pwmio.PWMOut(board.GP4, frequency=1000)\n\nwhile True:\n    # Fade in\n    for duty in range(0, 65535, 500):\n        led.duty_cycle = duty\n        time.sleep(0.01)\n\n    # Fade out\n    for duty in range(65535, 0, -500):\n        led.duty_cycle = duty\n        time.sleep(0.01)\n\nHow it works\n\nduty_cycle range: 0 → 65535\n0 = LED off\n65535 = full brightness\nIncreasing the duty cycle gradually creates the fade-in effect.",
+    "crumbs": [
+      "Getting Started",
+      "Testing your Arduino Sensor Kit Base"
+    ]
+  },
+  {
+    "objectID": "testing_sensor_kit_base.html#optional-smoother-fade",
+    "href": "testing_sensor_kit_base.html#optional-smoother-fade",
+    "title": "Testing your Arduino Sensor Kit Base",
+    "section": "Optional: smoother fade",
+    "text": "Optional: smoother fade\nUse smaller steps:\nrange(0, 65535, 100)",
+    "crumbs": [
+      "Getting Started",
+      "Testing your Arduino Sensor Kit Base"
+    ]
+  },
+  {
+    "objectID": "testing_sensor_kit_base.html#optional-breathing-led-continuous-smooth-loop",
+    "href": "testing_sensor_kit_base.html#optional-breathing-led-continuous-smooth-loop",
+    "title": "Testing your Arduino Sensor Kit Base",
+    "section": "Optional: breathing LED (continuous smooth loop)",
+    "text": "Optional: breathing LED (continuous smooth loop)\nimport time\nimport board\nimport pwmio\n\nled = pwmio.PWMOut(board.GP4, frequency=1000)\n\nbrightness = 0\nfade_amount = 500\n\nwhile True:\n    led.duty_cycle = brightness\n    brightness += fade_amount\n\n    if brightness &lt;= 0 or brightness &gt;= 65535:\n        fade_amount = -fade_amount\n\n    time.sleep(0.01)\nThis produces a continuous breathing effect often used as a status indicator.",
+    "crumbs": [
+      "Getting Started",
+      "Testing your Arduino Sensor Kit Base"
+    ]
+  },
+  {
+    "objectID": "testing_sensor_kit_base.html#gamma-corrected-led-fade",
+    "href": "testing_sensor_kit_base.html#gamma-corrected-led-fade",
+    "title": "Testing your Arduino Sensor Kit Base",
+    "section": "Gamma-Corrected LED Fade",
+    "text": "Gamma-Corrected LED Fade\nGamma correction makes LED fading look smooth to human eyes. Without it, most brightness change appears at the high end because human vision is non-linear. Gamma correction compensates for that.\nTypical gamma value: ~2.2\nimport time\nimport board\nimport pwmio\nimport math\n\nled = pwmio.PWMOut(board.GP4, frequency=1000)\n\ngamma = 2.2\nsteps = 100\n\nwhile True:\n    # Fade in\n    for i in range(steps):\n        x = i / (steps - 1)\n        corrected = math.pow(x, gamma)\n        led.duty_cycle = int(corrected * 65535)\n        time.sleep(0.01)\n\n    # Fade out\n    for i in reversed(range(steps)):\n        x = i / (steps - 1)\n        corrected = math.pow(x, gamma)\n        led.duty_cycle = int(corrected * 65535)\n        time.sleep(0.01)\n\nKey idea\nBrightness is corrected like this:\ncorrected = brightness ^ gamma\nExample (gamma ≈ 2.2):\n\n\n\nLinear input\nPerceived brightness\nPWM output\n\n\n\n\n0.1\nvery dim\n~0.006\n\n\n0.5\nmedium\n~0.22\n\n\n0.8\nbright\n~0.61\n\n\n\nThis produces a much smoother fade, especially at low brightness.",
+    "crumbs": [
+      "Getting Started",
+      "Testing your Arduino Sensor Kit Base"
+    ]
+  },
+  {
+    "objectID": "testing_sensor_kit_base.html#faster-method-gamma-lookup-table",
+    "href": "testing_sensor_kit_base.html#faster-method-gamma-lookup-table",
+    "title": "Testing your Arduino Sensor Kit Base",
+    "section": "Faster Method (Gamma Lookup Table)",
+    "text": "Faster Method (Gamma Lookup Table)\nComputing pow() every loop is slower on microcontrollers. A lookup table is faster.\nimport time\nimport board\nimport pwmio\n\nled = pwmio.PWMOut(board.GP4, frequency=1000)\n\ngamma = 2.2\nsteps = 100\n\n# Precompute gamma table\ngamma_table = [\n    int((i / (steps - 1)) ** gamma * 65535)\n    for i in range(steps)\n]\n\nwhile True:\n    for v in gamma_table:\n        led.duty_cycle = v\n        time.sleep(0.01)\n\n    for v in reversed(gamma_table):\n        led.duty_cycle = v\n        time.sleep(0.01)\nBenefits:\n\nsmoother animation\nless CPU work\nbetter for multiple LEDs",
+    "crumbs": [
+      "Getting Started",
+      "Testing your Arduino Sensor Kit Base"
+    ]
+  },
+  {
+    "objectID": "testing_sensor_kit_base.html#bonus-perceptually-smooth-breathing-led",
+    "href": "testing_sensor_kit_base.html#bonus-perceptually-smooth-breathing-led",
+    "title": "Testing your Arduino Sensor Kit Base",
+    "section": "Bonus: Perceptually Smooth Breathing LED",
+    "text": "Bonus: Perceptually Smooth Breathing LED\nimport time\nimport board\nimport pwmio\nimport math\n\nled = pwmio.PWMOut(board.GP4, frequency=1000)\n\nt = 0\n\nwhile True:\n    brightness = (math.sin(t) + 1) / 2\n    corrected = brightness ** 2.2\n    led.duty_cycle = int(corrected * 65535)\n\n    t += 0.05\n    time.sleep(0.01)\nThis produces a very smooth Apple-style breathing LED.",
+    "crumbs": [
+      "Getting Started",
+      "Testing your Arduino Sensor Kit Base"
     ]
   },
   {
